@@ -1,0 +1,116 @@
+import { Button, Palette } from "std-widgets.slint";
+
+import "../assets/georgia.ttf";
+
+export { App, Question, Positive, Negative }
+
+global Assets {
+    out property<image> icon: @image-url("../assets/logo.png");
+    }
+
+component App inherits Window {
+    title: "Form 1";
+    icon: Assets.icon;
+    min-width: 720px; min-height: 400px;
+    max-width: 720px; max-height: 400px;
+    callback open-start();
+        
+    Text {
+        y: 50px;
+        text: "SHRIMP DETECTOR";
+        font-family: "Georgia";
+        font-size: 56px;
+        font-weight: 1000;
+        horizontal-alignment: center;
+        }
+    Image {
+        y: 150px;
+        source: Assets.icon;
+        horizontal-alignment: center;
+        width: 100px; height: 100px;
+        }
+    Button {
+        y: 300px;
+        text: "start detection";
+        enabled: true;
+        width: 128px; height: 48px;
+        
+        clicked => {
+            self.enabled = false;
+            root.open-start();
+            }
+        }
+    }
+
+component Question inherits Window {
+    title: "pregunta";
+    icon: Assets.icon;
+    min-width: 240px; min-height: 120px;
+    max-width: 240px; max-height: 120px;
+    callback open-positive();
+    callback open-negative();
+    function deactivate() {
+        yes-button.enabled = false;
+        no-button.enabled = false;
+        }
+
+    property <length> button-width: 80px;
+    property <length> button-height: 24px;
+
+    Text {
+        y: 25px;
+        text: "Are you shrimp?";
+        font-size: 14px;
+        }
+    HorizontalLayout {
+        y: 55px;
+        alignment: space-around;
+
+        yes-button := Button {
+            width: button-width; height: button-height;
+            text: "Yes";
+
+            clicked => {
+                root.deactivate();
+                root.open-positive();
+                }
+            }
+        no-button := Button {
+            width: button-width; height: button-height;
+            text: "No";
+
+            clicked => {
+                root.deactivate();
+                root.open-negative();
+                }
+            }
+        }
+    }
+
+component Positive inherits Window {
+    title: "shrimp window";
+    icon: Assets.icon;
+    min-width: 1280px; min-height: 720px;
+    max-width: 1280px; max-height: 720px;
+
+    Image {
+        source: @image-url("../assets/shrimp.jpg");
+        width: 100%; height: 100%;
+        image-fit: fill;
+        image-rendering: pixelated;
+        }
+    }
+
+component Negative inherits Window {
+    title: "krill yourself";
+    icon: Assets.icon;
+    min-width: 967px; min-height: 544px;
+    max-width: 967px; max-height: 544px;
+
+    Image {
+        source: @image-url("../assets/no_shrimp.jpg");
+        width: 100%; height: 100%;
+        image-fit: fill;
+        image-rendering: pixelated;
+        }
+    }

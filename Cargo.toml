@@ -1,0 +1,14 @@
+[package]
+name = "shrimp-detector"
+version = "1.0.0"
+edition = "2024"
+authors = ["SQD.exe"]
+description = "A Rust reimplementation of the great Shrimp Detector"
+
+[build-dependencies]
+slint-build = "1.12.1"
+winresource = "0.1.22"
+
+[dependencies]
+rodio = { version = "0.21.1", default-features = false, features = ["playback", "mp3"] }
+slint = "1.12.1"
