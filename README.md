@@ -4,7 +4,7 @@ A small recreation of an Internet meme/joke program of the same name
 
 Its main purpose is to simply bring a smile to your face
 
-## Acknowledgments
+## Acknowledgements
 
 I do not profit from, own, nor claim ownership of used materials
 
