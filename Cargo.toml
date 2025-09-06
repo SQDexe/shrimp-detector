@@ -2,8 +2,10 @@
 name = "shrimp-detector"
 version = "1.0.0"
 edition = "2024"
-authors = ["SQD.exe"]
 description = "A Rust reimplementation of the great Shrimp Detector"
+authors = ["SQD.exe"]
+repository = "https://github.com/SQDexe/shrimp-detector"
+readme = "README.md"
 
 [build-dependencies]
 slint-build = "1.12.1"
